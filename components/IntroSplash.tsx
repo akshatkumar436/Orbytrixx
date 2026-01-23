@@ -1,6 +1,6 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import LogoAnimation from './LogoAnimation';
 
 interface IntroSplashProps {
@@ -39,24 +39,6 @@ const IntroSplash: React.FC<IntroSplashProps> = ({ onLaunch }) => {
           <p className="text-brand-secondary font-black tracking-[0.4em] uppercase text-[10px] md:text-xs">
             Designed to Build. Built to Scale.
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 3.5, duration: 1 }}
-          className="mt-24"
-        >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onLaunch();
-            }}
-            className="group relative flex items-center gap-6 px-12 py-5 bg-brand-primary rounded-full transition-all duration-700 active:scale-95 shadow-2xl shadow-brand-primary/30"
-          >
-            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-white transition-colors">Launch Experience</span>
-            <ArrowRight className="w-4 h-4 text-white/70 group-hover:text-white group-hover:translate-x-2 transition-all" />
-          </button>
         </motion.div>
       </div>
 
