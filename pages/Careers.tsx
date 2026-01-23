@@ -48,12 +48,43 @@ const Careers: React.FC = () => {
 
   const isValid = Object.keys(errors).length === 0;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isValid) {
-      setSubmitted(true);
-    }
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!isValid) return;
+
+  const payload = {
+    access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+    subject: "New Career Application — Orbytrixx",
+    from_name: "Orbytrixx Careers",
+    name: formData.name,
+    email: formData.email,
+    phone: `${formData.countryCode} ${formData.phone}`,
+    company: formData.company,
+    role: formData.role,
+    portfolio: formData.portfolio,
+    summary: formData.summary,
   };
+
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      setSubmitted(true);
+    } else {
+      alert("Application submission failed. Please try again.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again later.");
+  }
+};
+
 
   const handleReset = () => {
     setFormData(initialFormData);
