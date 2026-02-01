@@ -170,10 +170,10 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <div>
                   <h4 className="text-[10px] font-black uppercase tracking-widest text-brand-text mb-1">Primary</h4>
                   <a 
-                    href="tel:+917488932243"
+                    href="tel:+919145935539"
                     className="text-brand-secondary text-sm font-medium hover:text-brand-primary transition-colors cursor-pointer block underline decoration-brand-primary/20 hover:decoration-brand-primary"
                   >
-                    +91 7488932243
+                    +91 9145935539
                   </a>
                 </div>
               </div>
