@@ -50,9 +50,9 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 pb-20 px-6">
         <div className="max-w-5xl mx-auto w-full flex flex-col items-center text-center">
-          <Link to="/" className="block cursor-pointer transition-transform hover:scale-[1.02] active:scale-95">
+          <div className="block cursor-default select-none">
             <LogoAnimation showWordmark={false} />
-          </Link>
+          </div>
           
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -120,7 +120,7 @@ const Home: React.FC = () => {
             {/* Left: Customer Logo Area */}
             <div className="w-full lg:w-[40%] flex items-center justify-center">
               <img 
-                src="/images/duvelogo.png"
+                src="https://duveworld.com/wp-content/uploads/2023/10/duve-logo-new.png" 
                 alt="DuveWorld Logo" 
                 className="w-full max-w-[200px] md:max-w-[280px] h-auto object-contain"
                 onError={(e) => {
