@@ -120,7 +120,7 @@ const Home: React.FC = () => {
             {/* Left: Customer Logo Area */}
             <div className="w-full lg:w-[40%] flex items-center justify-center">
               <img 
-                src="https://duveworld.com/wp-content/uploads/2023/10/duve-logo-new.png" 
+                src="public/images/duvelogo.png"
                 alt="DuveWorld Logo" 
                 className="w-full max-w-[200px] md:max-w-[280px] h-auto object-contain"
                 onError={(e) => {
