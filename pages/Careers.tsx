@@ -48,43 +48,12 @@ const Careers: React.FC = () => {
 
   const isValid = Object.keys(errors).length === 0;
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-  if (!isValid) return;
-
-  const payload = {
-    access_key: import.meta.env.VITE_WEB3FORMS_KEY,
-    subject: "New Career Application — Orbytrixx",
-    from_name: "Orbytrixx Careers",
-    name: formData.name,
-    email: formData.email,
-    phone: `${formData.countryCode} ${formData.phone}`,
-    company: formData.company,
-    role: formData.role,
-    portfolio: formData.portfolio,
-    summary: formData.summary,
-  };
-
-  try {
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isValid) {
       setSubmitted(true);
-    } else {
-      alert("Application submission failed. Please try again.");
     }
-  } catch (error) {
-    alert("Network error. Please try again later.");
-  }
-};
-
+  };
 
   const handleReset = () => {
     setFormData(initialFormData);
@@ -205,7 +174,8 @@ const handleSubmit = async (e: React.FormEvent) => {
                 className="glass-card p-10 rounded-[2.5rem] border-brand-primary/10 flex flex-col items-center text-center group hover:border-brand-primary/30 transition-all shadow-sm"
               >
                 <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-white transition-all">
-                  {React.cloneElement(b.icon as React.ReactElement, { size: 20 })}
+                  {/* Fix: use React.ReactElement<any> to avoid TS error on 'size' prop */}
+                  {React.cloneElement(b.icon as React.ReactElement<any>, { size: 20 })}
                 </div>
                 <h4 className="text-xs font-black uppercase tracking-widest mb-4 text-brand-text">{b.title}</h4>
                 <p className="text-brand-secondary text-[11px] font-bold uppercase tracking-tight leading-relaxed">{b.desc}</p>

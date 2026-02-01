@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import LogoAnimation from './LogoAnimation';
 
@@ -8,6 +8,17 @@ interface IntroSplashProps {
 }
 
 const IntroSplash: React.FC<IntroSplashProps> = ({ onLaunch }) => {
+  useEffect(() => {
+    // Automatically transition to the home page after 5 seconds
+    // This allows the full logo reveal and subtitle animation to play (approx 4s total)
+    // plus a small buffer for the user to see the final static state.
+    const timer = setTimeout(() => {
+      onLaunch();
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [onLaunch]);
+
   return (
     <motion.div
       initial={{ opacity: 1 }}
@@ -42,17 +53,9 @@ const IntroSplash: React.FC<IntroSplashProps> = ({ onLaunch }) => {
         </motion.div>
       </div>
 
-      <button 
-        onClick={(e) => {
-          e.stopPropagation();
-          onLaunch();
-        }}
-        className="absolute bottom-12 text-[10px] text-brand-secondary/40 hover:text-brand-text uppercase tracking-[0.4em] font-black transition-colors"
-      >
-        Skip Intro
-      </button>
-
       <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_20vw_rgba(59,130,246,0.05)]" />
     </motion.div>
   );
-}; export default IntroSplash;
+};
+
+export default IntroSplash;

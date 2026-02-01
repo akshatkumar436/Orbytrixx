@@ -349,7 +349,8 @@ const Services: React.FC = () => {
                       {/* Left / Top Side: Core Info */}
                       <div className="flex flex-col md:w-[45%] cursor-default">
                         <div className="mb-4 md:mb-8 w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-[1.5rem] bg-brand-primary/10 flex items-center justify-center text-brand-primary">
-                          {React.cloneElement(service.icon as React.ReactElement, { className: "w-6 h-6 md:w-10 md:h-10" })}
+                          {/* Fix: use React.ReactElement<any> to avoid TS error on 'className' prop */}
+                          {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-6 h-6 md:w-10 md:h-10" })}
                         </div>
                         <h2 className="text-2xl md:text-4xl font-black text-brand-text mb-2 md:mb-4 tracking-tight leading-tight">
                           {service.title}
@@ -459,7 +460,8 @@ const Services: React.FC = () => {
 
               <div className="flex items-center gap-6 mb-10 cursor-default">
                 <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center text-brand-primary shrink-0">
-                  {currentService && React.cloneElement(currentService.icon as React.ReactElement, { className: "w-8 h-8" })}
+                  {/* Fix: use React.ReactElement<any> to avoid TS error on 'className' prop */}
+                  {currentService && React.cloneElement(currentService.icon as React.ReactElement<any>, { className: "w-8 h-8" })}
                 </div>
                 <h3 className="text-3xl font-black text-brand-text tracking-tight">{currentService?.title}</h3>
               </div>

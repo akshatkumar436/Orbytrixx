@@ -182,7 +182,8 @@ const Home: React.FC = () => {
                 className="flex flex-col items-center text-center p-8 glass-card rounded-[2.5rem] border-brand-primary/5"
               >
                 <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center mb-6 text-brand-primary">
-                  {React.cloneElement(feature.icon as React.ReactElement, { size: 32 })}
+                  {/* Fix: use React.ReactElement<any> to avoid TS error on 'size' prop */}
+                  {React.cloneElement(feature.icon as React.ReactElement<any>, { size: 32 })}
                 </div>
                 <h3 className="text-xl font-black mb-4 text-brand-text uppercase tracking-tight">{feature.title}</h3>
                 <p className="text-brand-secondary text-sm font-medium leading-relaxed">{feature.desc}</p>

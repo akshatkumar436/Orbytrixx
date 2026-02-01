@@ -13,7 +13,7 @@ const About: React.FC = () => {
     {
       date: "Early 2026",
       title: "Building from Zero",
-      desc: "With zero clients and a clear problem-solving mindset, we focused on creating clean, scalable systems and refining our service framework.",
+      desc: "With zero clients and a clear engineering-first mindset, we focused on creating clean, scalable systems and refining our service framework.",
       icon: <Zap className="w-5 h-5" />
     },
     {
@@ -72,20 +72,20 @@ const About: React.FC = () => {
               <div className="h-px w-full bg-brand-primary/10" />
 
               <p className="text-brand-secondary text-lg leading-relaxed font-medium">
-                We started with zero clients and a strong problem-solving mindset. From the beginning, our focus has been on designing and building digital solutions that are reliable, maintainable, and built to grow with businesses over time.
+                We started with zero clients and a strong engineering-first mindset. From the beginning, our focus has been on designing and building digital solutions that are reliable, maintainable, and built to grow with businesses over time.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
                 <div className="p-6 bg-white/5 border border-brand-primary/5 rounded-2xl">
                   <h4 className="text-[10px] font-black text-brand-primary uppercase tracking-widest mb-3">Our Role</h4>
                   <p className="text-sm text-brand-secondary leading-relaxed">
-                    We work as an technical partners — not just a service provider. Every system we design is built with clean structure, performance focus, and future readiness.
+                    We work as an engineering partner — not just a service provider. Every system we design is built with clean structure, performance focus, and future readiness.
                   </p>
                 </div>
                 <div className="p-6 bg-white/5 border border-brand-primary/5 rounded-2xl">
                   <h4 className="text-[10px] font-black text-brand-primary uppercase tracking-widest mb-3">Our Philosophy</h4>
                   <p className="text-sm text-brand-secondary leading-relaxed">
-                    At Orbytrixx, we believe that strong technical foundation creates lasting impact, clarity in systems leads to better business outcomes, and every solution should be built to scale from day one.
+                    At Orbytrixx, we believe that strong engineering creates lasting impact, clarity in systems leads to better business outcomes, and every solution should be built to scale from day one.
                   </p>
                 </div>
               </div>
@@ -116,7 +116,8 @@ const About: React.FC = () => {
                 >
                   {/* Icon Node */}
                   <div className="absolute left-[31px] md:left-1/2 w-8 h-8 rounded-full bg-brand-bg border-2 border-brand-primary flex items-center justify-center text-brand-primary z-10 -translate-x-1/2 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                    {React.cloneElement(milestone.icon as React.ReactElement, { size: 14 })}
+                    {/* Fix: use React.ReactElement<any> to avoid TS error on 'size' prop */}
+                    {React.cloneElement(milestone.icon as React.ReactElement<any>, { size: 14 })}
                   </div>
 
                   {/* Content Card */}
@@ -162,7 +163,8 @@ const About: React.FC = () => {
                 className="glass-card p-8 rounded-3xl border-brand-primary/10 flex flex-col items-center text-center group hover:border-brand-primary/30 transition-all shadow-sm"
               >
                 <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-white transition-all">
-                  {React.cloneElement(item.icon as React.ReactElement, { size: 20 })}
+                  {/* Fix: use React.ReactElement<any> to avoid TS error on 'size' prop */}
+                  {React.cloneElement(item.icon as React.ReactElement<any>, { size: 20 })}
                 </div>
                 <h4 className="text-[10px] font-black uppercase tracking-widest text-brand-text">{item.text}</h4>
               </motion.div>
@@ -179,7 +181,7 @@ const About: React.FC = () => {
             className="max-w-3xl mx-auto space-y-12"
           >
             <p className="text-brand-secondary text-lg font-medium leading-relaxed italic">
-              "Building with integrity, technical excellence, and a long-term vision to become a trusted digital partner for growing businesses worldwide."
+              "We are at the early stage of our journey, but we are building with integrity, technical excellence, and a long-term vision to become a trusted digital partner for growing businesses worldwide."
             </p>
             
             <div className="space-y-4">
